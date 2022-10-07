@@ -2,8 +2,10 @@ package steps;
 
 import io.cucumber.java.en.Given;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.Test;
 import utils.apiConstants;
 import utils.apiPayload;
 
@@ -22,9 +24,8 @@ public class token {
 
         response.prettyPrint();
 
-        token=response.jsonPath().getString("token");
-        token= "Bearer "+token;
-        System.out.println(token);
+        String tok = response.jsonPath().getString("token");
+        token="Bearer "+tok;
 
     }
 }

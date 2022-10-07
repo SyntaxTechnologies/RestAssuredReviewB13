@@ -13,6 +13,15 @@ Feature: API workflow resource
     And the employee id "Employee.employee_id" is stored as global variable
 
 
+    @api
+    Scenario: Get the job titles
+      Given a request is sent for getting all the available job titles
+      When a Get request is sent to get all job titles
+      Then print all the job titles on the console
+
+
+
+
 
 
 

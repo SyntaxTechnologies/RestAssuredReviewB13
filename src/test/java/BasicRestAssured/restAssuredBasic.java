@@ -28,13 +28,9 @@ public class restAssuredBasic {
 //        print thr response on console
         response.prettyPrint();
 
-//        asseert that the response contains the message Employee created
-         String  ExpectedValue="Employee Created";
          String actualValue=response.jsonPath().getString("Message");
-        System.out.println("the value of key Message is :   "+ actualValue);
-        Assert.assertEquals(actualValue,ExpectedValue);
 
-        response.then().assertThat().statusCode(201);
+
     }
 
     @Test

@@ -11,6 +11,7 @@ public class apiConstants {
     public static final String UPDATE_EMPLOYEE_URI = "/updateEmployee.php";
     public static final String GET_ALL_EMPLOYEES_URI = "/getAllEmployees.php";
     public static final String DELETE_EMPLOYEE_URI = "/deleteEmployee.php";
+    public static final String JOB_TITLE_ENDPOINT = "/jobTitle.php";
 
     public static final String HEADER_CONTENT_TYPE = "Content-Type";
     public static final String CONTENT_TYPE_VALUE = "application/json";

@@ -1,5 +1,9 @@
 package steps;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
@@ -52,10 +56,41 @@ public void a_request_is_sent_for_getting_all_the_available_job_titles() {
     }
     @Then("print all the job titles on the console")
     public void print_all_the_job_titles_on_the_console() {
-
-    
-//        Object job = response.jsonPath().get("Jobs[0].job");
+//using json path
+//        int size = response.jsonPath().getInt("Jobs.size()");
+//        System.out.println(size);
+//
+//
+//        for(int i=0 ;i<size;i++) {
+//        Object job = response.jsonPath().get("Jobs["+i+"].job");
 //        System.out.println(job);
+//        }
+
+
+//        using the library GSON
+
+//        get the response from the server in form of a string
+        String resp = response.body().asString();
+
+//convert the string response to jsonObject so that we can work on it effectively
+        JsonElement JsonRepsone = new JsonParser().parse(resp);
+
+        JsonObject Jobs = JsonRepsone.getAsJsonObject();
+        JsonElement allJobs = Jobs.get("Jobs");
+
+        JsonArray all_jobs = allJobs.getAsJsonArray();
+
+        JsonElement X = all_jobs.get(1);
+
+
+        JsonObject job_desc = X.getAsJsonObject();
+
+        System.out.println( job_desc.get("id"));
+        System.out.println( job_desc.get("job"));
+
+
+
+
 
     }
 
